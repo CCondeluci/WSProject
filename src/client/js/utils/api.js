@@ -1,8 +1,8 @@
 import axios from 'axios'; 
 
 //Return the full list of available weiss sets
-export async function fetchSerieses() {
-  return (await axios.get('/api/serieslist/')).data;
+export async function fetchSerieses(lang) {
+  return (await axios.get(`/api/serieslist/${lang || ''}`)).data;
 }
 
 //Return a single weiss set
@@ -16,4 +16,11 @@ export async function fetchDeck(deckid) {
 
 export async function saveDeck(data) {
 	return (await axios.post(`/api/deck`, data));
+}
+
+//Search decks with various parameters
+export async function searchDeck(data){
+	return (await axios.get(`/api/search/deck`, {
+		params:data
+	})).data;
 }

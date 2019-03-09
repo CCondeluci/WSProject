@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Icon, Badge } from 'antd';
 import Img from 'react-image';
 
+import { generateCardImageLink } from 'Utils/cardshorthands';
 import { selectCard } from 'Actions/DeckActions';
 
 class CardItem extends Component {
@@ -9,12 +10,12 @@ class CardItem extends Component {
 	render(){
 		const { card } = this.props;
 		return(
-			<div className="container-carditem">
+			<div className="container-carditem clickable">
 				<Badge count={card.quantity} style={{ backgroundColor: '#000000' }}>
-				<div className='cardimage' onMouseEnter={ () => selectCard({card})}>
+				<div className='cardimage' onMouseEnter={ () => selectCard({card})} onClick={ () => selectCard({card}, true) }>
 					<Img
 				    src={[
-				      `/images/${card.side}${card.release}/${card.sid}.gif`,
+				      generateCardImageLink(card),
 				    ]}
 				    unloader={<Icon className="image-not-found" type="question-circle" />}
 				  />

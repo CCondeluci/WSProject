@@ -14,8 +14,47 @@
  * 
  */
 
+ const JPArmy = 
+
 module.exports = {
-    "AOT/S35-094": -1, // "Predation" Titan
-    "AOT/S35-095": -1, // "Invasion" Titan
-    "SY/WE09-19": 8   // Endless Eight
+    "AOT/S50-088": -1, // "Pursuit" Titan
+    "AOT/S50-095": -1, // "Predation" Titan
+    "SY/WE09-19": 8,  // Endless Eight
+    "KC/S25-166": -1,  // Maruyu, Type 3 Submerged Transport Ship
+    "RG/W26-023": -1,  // Sisters
+    "GG/S23-085": -1,  // Young Hideauze Lifeform
+    "GG/S23-087": -1,  // Whalesquid
+    "SG/W19-038": -1,  // Noise (Episode 4)
+    "KS/W55-089": -1,  // "Walking on the Street" Axis Cultist
+    "KI/S44-015": -1,  // Goromin
+    "DG/S02-038": -1,  // Prinny
+    "DG/S02-T02": -1,  // Prinny again
+    "PY/S38-078": -1,  // Red Puyo
+    "PY/S38-018": -1,  // Yellow Puyo
+    "PY/S38-051": -1,  // Green Puyo
+    "PY/S38-105": -1,  // Blue Puyo
+    "FXX/S57-014": -1, // Mass-Produced Franxx
+    "TF/S32-084": -1,  // "Abominable Being" Terraformar
+    "PD/S29-046": 8,   // Hatsune Miku "Conflict"
+    "GL/S52-094": -1,  // Mugann
+    "RZ/S55-015": -1,  // Fingertips
+    "KS/W49-057": -1,  // Cabbage
+    "RW/W48-090": -1,  // "Made by Kotori-san" Monster
+    "BD/W47-T11": 5,   // My Favorite item
+    "MM/W35-091": -1,  // Kyubey Going "Kyu"
+    "SW/S49-042": -1,  // Gamorrean
+    ////////////////EN CARDS/////////////////////
+    "AOT/S50-E088": -1, // "Pursuit" Titan
+    "AOT/S50-E095": -1, // "Predation" Titan
+    "SY/WE09-E19": 8,  // Endless Eight
+    "KC/S25-E166": -1,  // Maruyu, Type 3 Submerged Transport Ship
+    "KS/W55-E089": -1,  // "Walking on the Street" Axis Cultist
+    "DG/S03-E075": -1,  // Prinny
+    "DG/S03-PE01": -1,  // Prinny PROMO
+    "DG/S03-TE02": -1,  // Prinny TD (jfc)
+    "PD/S29-E046": 8,   // Hatsune Miku "Conflict"
+    "GL/S52-E094": -1,  // Mugann
+    "KS/W49-E057": -1,  // Cabbage
+    "BD/W47-TE11": 5,   // My Favorite item
+    "MM/W35-E091": -1,  // Kyubey Going "Kyu"
 }

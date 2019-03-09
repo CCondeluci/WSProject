@@ -9,24 +9,28 @@ let fbuildercards = [];//Buildercards after filters
 let builderfilters = {
   cardtype: [],
   colour: [],
+  level: [],
   text: null
 };
 
 let deck = [];
 let selectedCard = {
   card: null,
-  location: null,
+  lock: false,
 };
 
 function filterBuilderCards() {
   fbuildercards = buildercards.filter( (card) => {
 
-
-    if( builderfilters.cardtype.includes( card.cardtype ) ){
+    if( builderfilters.cardtype.length > 0 && !builderfilters.cardtype.includes( card.cardtype ) ){
       return false;
     }
 
-    if( builderfilters.colour.includes( card.colour ) ){
+    if( builderfilters.level.length > 0 && !builderfilters.level.includes( card.level ) ){
+      return false;
+    }
+
+    if( builderfilters.colour.length > 0 && !builderfilters.colour.includes( card.colour ) ){
       return false;
     }
 
@@ -59,7 +63,6 @@ const BuilderStore = {
           //On remove, props.data = seriesid
           let seriesToRemove = serieslist.find( (s) => s._id == props.data );
           buildercards = buildercards.filter( ( card ) => {
-            console.log(card.release, seriesToRemove.release);
             return card.side + card.release != seriesToRemove.side + seriesToRemove.release;
           })
 
@@ -68,11 +71,26 @@ const BuilderStore = {
         buildercards = buildercards.sort(sortall);
         filterBuilderCards()
         break;
+      case AT.CARDS_CLEAR:
+        buildercards = [];
+        filterBuilderCards()
+        break;
       case AT.SELECT_CARD:
-        selectedCard = {
-          card: props.data.card,
-          location: props.data.location
-        };
+        //when a selected card is locked, hover event will not not change selected card
+        if( props.lock ){
+          if( props.data.card._id === selectedCard.card._id ){
+            selectedCard.lock = !selectedCard.lock;
+          }
+          else{
+            selectedCard = {
+              lock: true,
+              card: props.data.card
+            }
+          }
+        }
+        else if( selectedCard.lock === false ){
+          selectedCard.card = props.data.card;
+        }
         break;
       case AT.ADD_DECK_CARD:
         deck.push(props.card);
@@ -86,7 +104,7 @@ const BuilderStore = {
         if( props.data.type === 'text' ){
           builderfilters.text = props.data.value;
         }
-        else if( props.data.value === false ){//Add value onto type array
+        else if( props.data.value === true ){//Add value onto type array
             builderfilters[props.data.type].push(props.data.filter);
         }
         else{//Remove value from type array

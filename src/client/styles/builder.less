@@ -38,7 +38,12 @@
 
 .container-series-selector{
 	.container-series-select{
+		display:flex;
 		padding-bottom: 3px;
+		.ant-spin-nested-loading{
+			width: 100%;
+			margin-right: 5px;
+		}
 	}
 	.container-filters{
 		height: 90px;
@@ -58,37 +63,6 @@
 	.container-card-selector{
 		height: 30vh;
 		overflow-y: auto;
-	}
-}
-
-.container-card{
-	min-height:470px;
-
-	border: 1px solid black;
-	padding: 10px;
-	margin-bottom: 5px;
-	text-align: center;
-
-	.card{
-
-		.cardimage{
-			min-height: 200px;
-
-			.image-not-found{
-				font-size: 10em;
-			}
-		}
-
-		.cardtext{
-			padding: 5px;
-			max-height: 150px;
-			overflow-y: auto;
-			background: lightgray;
-		}
-
-		.container-property{
-			text-align: left;
-		}
 	}
 }
 

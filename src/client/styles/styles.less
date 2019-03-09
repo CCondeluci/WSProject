@@ -12,6 +12,7 @@
 	.header-button{
 		padding: 10px 15px 9px 15px;
 		float: left;
+		height: inherit;
 		width: auto;
 		display: block;
 		text-align: center;
@@ -24,6 +25,51 @@
 
 		&:hover{
 			background-color: #000000;
+		}
+
+		img{
+			max-height: 100%;
+			max-width: 100%;
+		}
+	}
+}
+
+.container-card{
+	min-height:470px;
+
+	border: 1px solid black;
+	padding: 10px;
+	margin-bottom: 5px;
+	text-align: center;
+
+	-webkit-box-shadow: 4px 3px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 4px 3px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 4px 3px 5px 0px rgba(0,0,0,0.75);
+
+	&.locked{
+		border-width: 3px;
+		border-color: red;
+	}
+
+	.card{
+
+		.cardimage{
+			min-height: 200px;
+
+			.image-not-found{
+				font-size: 10em;
+			}
+		}
+
+		.cardtext{
+			padding: 5px;
+			max-height: 150px;
+			overflow-y: auto;
+			background: lightgray;
+		}
+
+		.container-property{
+			text-align: left;
 		}
 	}
 }
@@ -48,6 +94,15 @@ button{
 		&:hover{
 			background-color: @danger-highlight!important;
 		}
+	}
+}
+
+.ant-switch.squared{//lang switch in builder
+	height: 32px;
+	border-radius:5px;
+
+	&:after{
+		top:6px;
 	}
 }
 

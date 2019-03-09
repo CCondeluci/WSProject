@@ -4,9 +4,10 @@
 const neoStandardMap = require('../mappings/neo-standard-map');
 const armyMap = require('../mappings/army-map');
 
-module.exports = (deck) => {
+module.exports = (deck, carddata) => {
     // deck legality object
     let deckLegality = {
+        deckvalid: false,
         neoLegal: false,
         neoSets: [],
         failReason: "unknown"
@@ -22,9 +23,19 @@ module.exports = (deck) => {
     let cardCount = {};
     let cxCount = 0;
     let setCodes = new Set();
-    for (let card of deck.cards) {
+    for (let cardID of deck.cards) {
+
+        //get card data from ID
+        let card = carddata.find( c => c._id == cardID );
+
+        //If the cardID dosnt exist something has gone really wrong
+        if (!card || card === undefined){
+            deckLegality.failReason = `Card could not be found: ${cardID}`;
+            return deckLegality;
+        }
+
         // build card number (remove variant indicators)
-        let cardNumber = `${card.set}/${card.side}${card.release}-${card.sid.replace(/[a-z]/g, '')}`;
+        let cardNumber = `${card.set}/${card.side}${card.release}-${card.sid.replace(/[a-z]$/g, '')}`;
         // add card set to Set 
         setCodes.add(card.set);
         // check if card count has exceeded standard of 4
@@ -68,6 +79,9 @@ module.exports = (deck) => {
         return deckLegality;
     }
 
+    // Deck has passed all valid checks
+    deckLegality.deckvalid = true;
+
     // Check for Neo Standard Legality
     let setArray = Array.from(setCodes);
     let neoStandardSets = [];
@@ -79,7 +93,7 @@ module.exports = (deck) => {
 
     if (neoStandardSets.length > 0) {
         deckLegality.neoLegal = true; 
-        deckLegality.failReason = "n/a";
+        deckLegality.failReason = null;
         deckLegality.neoSets = neoStandardSets;
     }
 
